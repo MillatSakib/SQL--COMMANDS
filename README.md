@@ -63,4 +63,25 @@ VALUES
 (103, 'Rahim', 'Male', 18, 3.44, 'Sylhet');
 ```
 
-### 8.
+### 8. Select Columns
+
+One column select
+
+```sql
+SELECT NAME
+FROM student_details
+```
+
+Multi column select
+
+```sql
+SELECT Roll,NAME
+FROM student_details
+```
+
+All column select
+
+```sql
+SELECT*
+FROM student_details
+```
