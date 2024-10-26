@@ -211,3 +211,23 @@ If we change the column name of generated data then we can use `AS` keyword. The
 SELECT Roll as ID, Name AS First_Name
 FROM student_details;
 ```
+
+### 14. SQL Constraints
+
+SQL constraints are used to specify rules for table data. Some times we don't drop any data for a field. But we don't want that field would be be blank. Or we want to the value of that field will be unique. We can achive that using `SQL Constrain`. There are 6 type of SQL Constrain. That are:
+
+1. NOT NULL
+2. UNIQUE
+3. PRIMARY KEY -> NOT NULL + UNIQUE
+4. CHECK -> Determines whether the value is valid or not from a logical expression.
+5. DEFAULT -> While inserting data into a table, if no value is supplied to a column, then the column gets the value set as DEFAULT.
+
+```sql
+CREATE TABLE student_details
+(
+    ID int NOT NULL AUTO_INCREMENT,
+    Name varchar(15) NOT NULL,
+    Salary double(10,2),
+    PRIMARY KEY(ID)
+);
+```
