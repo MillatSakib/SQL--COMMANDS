@@ -102,3 +102,23 @@ SELECT *
 FROM student_details
 LIMIT 5;
 ```
+
+### 10. Sort
+
+We can sort in ascending order and descending order. For Ascending order we haven't add asc keyword but for descending order we have to add `DESC` keyword.
+
+`For Ascending order`:
+
+```sql
+SELECT Name, GPA
+FROM student_details
+ORDER BY GPA;
+```
+
+`For Descending order`:
+
+```sql
+SELECT Name, GPA
+FROM student_details
+ORDER BY GPA DESC;
+```
