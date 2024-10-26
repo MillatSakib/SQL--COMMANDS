@@ -122,3 +122,43 @@ SELECT Name, GPA
 FROM student_details
 ORDER BY GPA DESC;
 ```
+
+### 11. WHERE
+
+```sql
+SELECT *
+FROM student_details
+WHERE NAME='MANSINA';
+```
+
+```sql
+SELECT *
+FROM student_details
+WHERE Roll BETWEEN 100 AND 110;
+```
+
+```sql
+SELECT *
+FROM student_details
+WHERE Gender="Male" OR GPA>= 3.50;
+```
+
+```sql
+SELECT *
+FROM student_details
+WHERE Gender="Male" AND GPA>= 3.50;
+```
+
+We can use `IN` keyword instead of multiple `OR` operator.
+
+```sql
+SELECT *
+FROM student_details
+WHERE City IN ('Sylhet', 'Dhaka', 'Barisal');
+```
+
+```sql
+SELECT *
+FROM student_details
+WHERE City NOT IN ('Sylhet', 'Dhaka', 'Barisal');
+```
