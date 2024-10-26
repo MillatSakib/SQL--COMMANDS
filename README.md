@@ -231,3 +231,63 @@ CREATE TABLE student_details
     PRIMARY KEY(ID)
 );
 ```
+
+### 15. Upate SQL
+
+```sql
+UPDATE student_details
+SET Name='Md. Sohan Millat Sakib', salary=520000
+WHERE ID = 1002;
+```
+
+### 16. DELETE SQL
+
+```sql
+DELETE FROM STUDENT
+WHERE ID=1002;
+```
+
+### 17. AGGREGATION:
+
+```sql
+SELECT COUNT(*),
+MAX(Salary), MIN(Salary), SUM(Salary), AVG(Salary)
+FROM teacher;
+```
+
+### 18. Sub Query in SQL
+
+```sql
+SELECT *
+FROM teacher
+WHERE Salary > SELECT AVG(Salary)FROM teacher;
+```
+
+### 19. `ALTER` Keyword:
+
+Using Alter Table command we can
+
+- Add new column in the table.
+- Change the name of column.
+- Delete any column.
+
+For add a column execute the command below:
+
+```sql
+ALTER TABLE teacher
+ADD Age int(5);
+```
+
+For update a column execute the command below:
+
+```sql
+ALTER TABLE teacher
+CHANGE Dept varchar(25);
+```
+
+For delete a column execute the command below:
+
+```sql
+ALTER TABLE teacher
+DROP COLUMN Age;
+```
