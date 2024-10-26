@@ -162,3 +162,52 @@ SELECT *
 FROM student_details
 WHERE City NOT IN ('Sylhet', 'Dhaka', 'Barisal');
 ```
+
+### 12. `LIKE` keyword
+
+Using `LIKE` keyword we can we can define a pattern and match the pattern with our database data. And Example are given below:
+
+```sql
+SELECT *
+FROM student_details
+WHERE Name LIKE '%S';
+```
+
+Here we say that the data will return which string has `s` at last. No matter at first the string which character have there.
+
+In the given below example we can see that how can we find which string are start with character `s`
+
+```sql
+SELECT *
+FROM student_details
+WHERE Name LIKE 'S%';
+```
+
+We can also skip the character fist and last but match in the middle of the string like below
+
+```sql
+SELECT *
+FROM student_details
+WHERE Name LIKE '%hi%'
+```
+
+Here we get that data where `hi` string are available inside the string.
+
+We can skip checking the pattern of first character using `_` this underscore. If we have to skip multiple character then we can use multiple underscore.
+
+```sql
+SELECT *
+FROM student_details
+WHERE Name LIKE '__u';
+```
+
+Here we checking the 3rd character are `u` or not.
+
+### 13. `AS` Keyword
+
+If we change the column name of generated data then we can use `AS` keyword. The syntax are given below:
+
+```sql
+SELECT Roll as ID, Name AS First_Name
+FROM student_details;
+```
