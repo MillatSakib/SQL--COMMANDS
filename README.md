@@ -291,3 +291,39 @@ For delete a column execute the command below:
 ALTER TABLE teacher
 DROP COLUMN Age;
 ```
+
+### 20.Group By Clause:
+
+We can divide rows in a table into smaller groups by using the GROUP BY clause. Let I have a table below:
+| ID | Name | Salary | Department |
+|------|------------------|----------|------------|
+| 1000 | Alak kanti shar | 35000.00 | CSE |
+| 1001 | Rumel M S PIR | 45000.00 | EEE |
+| 1002 | Saiful Ambia | 32000.00 | CSE |
+| 1003 | Rubel | 9000.00 | EEE |
+| 1006 | Selina | 32000.00 | CSE |
+| 1007 | Asad | 38000.00 | EEE |
+| 1008 | Sohid | 33500.00 | BBA |
+| 1009 | Alin | 33000.00 | BBA |
+| 1010 | Dola Barua | 32000.00 | CSE |
+
+Now I want to find out the total salary of CSE, EEE, BBA faculty. How can I do it? We can do it using `Group By Clause`.
+
+The syntax of create Group By clause are given below:
+
+```
+SELECT column, group_function(column)
+FROM table
+[WHERE condition]
+[GROUP BY group_by_expression]
+[ORDER BY column];
+```
+
+But we have to remember that If we use where, group and order with together then we have to write Group after where and before order.
+
+```sql
+SELECT Department, SUM(Salary)
+FROM teacher
+GROUP BY Department
+ORDER BY SUM(Salary) DESC;
+```
