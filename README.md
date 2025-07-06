@@ -214,13 +214,49 @@ FROM student_details;
 
 ### 14. SQL Constraints
 
-SQL constraints are used to specify rules for table data. Some times we don't drop any data for a field. But we don't want that field would be be blank. Or we want to the value of that field will be unique. We can achive that using `SQL Constrain`. There are 6 type of SQL Constrain. That are:
+SQL constraints are used to specify rules for table data. Some times we don't drop any data for a field. But we don't want that field would be be blank. Or we want to the value of that field will be unique. We can achive that using `SQL Constrain`. A constraint in SQL is a rule applied to columns in a table to control the type of data that can go into a table. Constraints help maintain the accuracy, integrity, and reliability of your data. There are 7 type of SQL Constrain. That are:
 
 1. NOT NULL
 2. UNIQUE
 3. PRIMARY KEY -> NOT NULL + UNIQUE
+4. Composite Key.
+5. Foreign Key.
 4. CHECK -> Determines whether the value is valid or not from a logical expression.
 5. DEFAULT -> While inserting data into a table, if no value is supplied to a column, then the column gets the value set as DEFAULT.
+
+**NOT NULL:** Some value we want never be `NULL`. Like we want the value of `name` attribute will never be null. For this we will have to define like below:
+
+```sql
+CREATE TABLE student_details
+(
+    Name varchar(15) NOT NULL
+);
+```
+
+**Unique:** Some value we want to make it alawys unique. Like in our database we want that all the email will be unique. Then we can use `UNIQUE` constraints. Like below:
+
+```sql
+CREATE TABLE student_details
+(
+   email VARCHAR(100) UNIQUE
+);
+```
+**PRIMARY KEY:** In each and every table there must have primary key. Primary key alawys be `NULL` and `UNIQUE`. We can define primary key in two ways. Like the easiest way is write primary key beside the attributes. Like below:
+```sql
+CREATE TABLE student_details
+(
+   id INT PRIMARY KEY AUTO_INCREMENT
+);
+```
+We can also define primary key like below:
+```sql
+CREATE TABLE student_details
+(
+   id INT AUTO_INCREMENT,
+   PRIMARY KEY(id)
+);
+```
+We can also define primary key like below:
 
 ```sql
 CREATE TABLE student_details
@@ -230,6 +266,59 @@ CREATE TABLE student_details
     Salary double(10,2),
     PRIMARY KEY(ID)
 );
+```
+**COMPOSITE KEY:** Some time there have no primary key in the relation by which we can identify a record. On that time we can use `COMPOSITE KEY` to identify a record uniquely. The sql syntax of `COMPOSITE KEY` are given below:
+
+```sql
+CREATE TABLE diplomas(
+	student_name VARCHAR(50) NOT NULL,
+	course INT NOT NULL,
+	d_date DATE,
+	successful CHAR(1),
+    location VARCHAR(50),
+    PRIMARY KEY(student_name(50), course,d_date)
+);
+```
+
+**FOREIGN KEY:** We can conncet two table using foreign key. When there have any relationship within two relation then we can maintain the relationship using foreign key. Let say we have two table name team1 and players. On players table the `Primary key` is `player_no`. If we want to use it as primary key then it will be like below:
+
+```sql
+CREATE TABLE team2(
+	team_no INT NOT NULL,
+	player_no int NOT NULL,
+    division CHAR(15),
+    PRIMARY KEY(team_no),
+    FOREIGN KEY(player_no) REFERENCES players(player_no)
+);
+```
+
+**CHECK Constraints:** The CHECK constraint is used to limit the values that can be stored in a column. It ensures that all values in a column satisfy a specific condition.
+
+```sql
+CREATE TABLE students (
+    id INT,
+    age INT CHECK (age >= 18)
+);
+
+```
+Or using ALTER TABLE:
+
+```sql
+ALTER TABLE students
+ADD CHECK (age >= 18);
+```
+**DEFAULT Constraint:** The DEFAULT constraint is used to assign a default value to a column when no value is specified during an insert.
+```sql
+CREATE TABLE users (
+    id INT,
+    status VARCHAR(10) DEFAULT 'active'
+);
+
+```
+Or using ALTER TABLE:
+```sql
+ALTER TABLE users
+ALTER COLUMN status SET DEFAULT 'active';
 ```
 
 ### 15. Upate SQL
