@@ -221,8 +221,8 @@ SQL constraints are used to specify rules for table data. Some times we don't dr
 3. PRIMARY KEY -> NOT NULL + UNIQUE
 4. Composite Key.
 5. Foreign Key.
-4. CHECK -> Determines whether the value is valid or not from a logical expression.
-5. DEFAULT -> While inserting data into a table, if no value is supplied to a column, then the column gets the value set as DEFAULT.
+6. CHECK -> Determines whether the value is valid or not from a logical expression.
+7. DEFAULT -> While inserting data into a table, if no value is supplied to a column, then the column gets the value set as DEFAULT.
 
 **NOT NULL:** Some value we want never be `NULL`. Like we want the value of `name` attribute will never be null. For this we will have to define like below:
 
@@ -241,14 +241,18 @@ CREATE TABLE student_details
    email VARCHAR(100) UNIQUE
 );
 ```
+
 **PRIMARY KEY:** In each and every table there must have primary key. Primary key alawys be `NULL` and `UNIQUE`. We can define primary key in two ways. Like the easiest way is write primary key beside the attributes. Like below:
+
 ```sql
 CREATE TABLE student_details
 (
    id INT PRIMARY KEY AUTO_INCREMENT
 );
 ```
+
 We can also define primary key like below:
+
 ```sql
 CREATE TABLE student_details
 (
@@ -256,6 +260,7 @@ CREATE TABLE student_details
    PRIMARY KEY(id)
 );
 ```
+
 We can also define primary key like below:
 
 ```sql
@@ -267,6 +272,7 @@ CREATE TABLE student_details
     PRIMARY KEY(ID)
 );
 ```
+
 **COMPOSITE KEY:** Some time there have no primary key in the relation by which we can identify a record. On that time we can use `COMPOSITE KEY` to identify a record uniquely. The sql syntax of `COMPOSITE KEY` are given below:
 
 ```sql
@@ -301,13 +307,16 @@ CREATE TABLE students (
 );
 
 ```
+
 Or using ALTER TABLE:
 
 ```sql
 ALTER TABLE students
 ADD CHECK (age >= 18);
 ```
+
 **DEFAULT Constraint:** The DEFAULT constraint is used to assign a default value to a column when no value is specified during an insert.
+
 ```sql
 CREATE TABLE users (
     id INT,
@@ -315,7 +324,9 @@ CREATE TABLE users (
 );
 
 ```
+
 Or using ALTER TABLE:
+
 ```sql
 ALTER TABLE users
 ALTER COLUMN status SET DEFAULT 'active';
@@ -352,8 +363,8 @@ FROM teacher
 WHERE Salary > SELECT AVG(Salary)FROM teacher;
 ```
 
-
 ## 19.Alter
+
 ### What is `ALTER` in SQL?
 
 The `ALTER` statement is used to **modify the structure of an existing table** in a database without deleting or recreating it. It can be used to:
@@ -374,9 +385,16 @@ ADD column_name datatype;
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE student
 ADD email VARCHAR(100);
+```
+
+We can also add a column after a column using the systax below:
+
+```sql
+ALTER TABLE Person ADD COLUMN Email varchar(100) AFTER LastName
 ```
 
 ---
@@ -389,6 +407,7 @@ MODIFY column_name new_datatype;
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE student
 MODIFY name VARCHAR(100);
@@ -404,6 +423,7 @@ RENAME COLUMN old_name TO new_name;
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE student
 RENAME COLUMN name TO full_name;
@@ -418,6 +438,7 @@ RENAME TABLE old_table_name TO new_table_name;
 ```
 
 **Example:**
+
 ```sql
 RENAME TABLE student TO learners;
 ```
@@ -432,6 +453,7 @@ DROP COLUMN column_name;
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE student
 DROP COLUMN email;
@@ -447,6 +469,7 @@ ADD PRIMARY KEY (column_name);
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE student
 ADD PRIMARY KEY (student_id);
@@ -464,6 +487,7 @@ REFERENCES other_table (column_name);
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE enrollment
 ADD CONSTRAINT fk_student
@@ -481,6 +505,7 @@ DROP PRIMARY KEY;
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE student
 DROP PRIMARY KEY;
@@ -496,6 +521,7 @@ DROP FOREIGN KEY fk_name;
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE enrollment
 DROP FOREIGN KEY fk_student;
@@ -511,6 +537,7 @@ ADD CONSTRAINT constraint_name UNIQUE (column_name);
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE student
 ADD CONSTRAINT unique_email UNIQUE (email);
@@ -526,6 +553,7 @@ DROP INDEX constraint_name;
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE student
 DROP INDEX unique_email;
@@ -541,11 +569,11 @@ CHANGE old_column_name new_column_name datatype;
 ```
 
 **Example:**
+
 ```sql
 ALTER TABLE student
 CHANGE full_name name VARCHAR(50);
 ```
-
 
 ### 20.Group By Clause:
 
