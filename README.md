@@ -352,34 +352,200 @@ FROM teacher
 WHERE Salary > SELECT AVG(Salary)FROM teacher;
 ```
 
-### 19. `ALTER` Keyword:
 
-Using Alter Table command we can
+## 19.Alter
+### What is `ALTER` in SQL?
 
-- Add new column in the table.
-- Change the name of column.
-- Delete any column.
+The `ALTER` statement is used to **modify the structure of an existing table** in a database without deleting or recreating it. It can be used to:
 
-For add a column execute the command below:
+- Add, modify, or delete columns
+- Rename columns or tables
+- Add or remove constraints
 
-```sql
-ALTER TABLE teacher
-ADD Age int(5);
-```
+---
 
-For update a column execute the command below:
+### Commands
 
-```sql
-ALTER TABLE teacher
-CHANGE Dept varchar(25);
-```
-
-For delete a column execute the command below:
+#### 1. Add New Column
 
 ```sql
-ALTER TABLE teacher
-DROP COLUMN Age;
+ALTER TABLE table_name
+ADD column_name datatype;
 ```
+
+**Example:**
+```sql
+ALTER TABLE student
+ADD email VARCHAR(100);
+```
+
+---
+
+#### 2. Modify Existing Column Type or Size
+
+```sql
+ALTER TABLE table_name
+MODIFY column_name new_datatype;
+```
+
+**Example:**
+```sql
+ALTER TABLE student
+MODIFY name VARCHAR(100);
+```
+
+---
+
+#### 3. Rename a Column
+
+```sql
+ALTER TABLE table_name
+RENAME COLUMN old_name TO new_name;
+```
+
+**Example:**
+```sql
+ALTER TABLE student
+RENAME COLUMN name TO full_name;
+```
+
+---
+
+#### 4. Rename a Table
+
+```sql
+RENAME TABLE old_table_name TO new_table_name;
+```
+
+**Example:**
+```sql
+RENAME TABLE student TO learners;
+```
+
+---
+
+#### 5. Drop a Column
+
+```sql
+ALTER TABLE table_name
+DROP COLUMN column_name;
+```
+
+**Example:**
+```sql
+ALTER TABLE student
+DROP COLUMN email;
+```
+
+---
+
+#### 6. Add a Primary Key
+
+```sql
+ALTER TABLE table_name
+ADD PRIMARY KEY (column_name);
+```
+
+**Example:**
+```sql
+ALTER TABLE student
+ADD PRIMARY KEY (student_id);
+```
+
+---
+
+#### 7. Add a Foreign Key
+
+```sql
+ALTER TABLE table_name
+ADD CONSTRAINT fk_name
+FOREIGN KEY (column_name)
+REFERENCES other_table (column_name);
+```
+
+**Example:**
+```sql
+ALTER TABLE enrollment
+ADD CONSTRAINT fk_student
+FOREIGN KEY (student_id)
+REFERENCES student (student_id);
+```
+
+---
+
+#### 8. Drop Primary Key
+
+```sql
+ALTER TABLE table_name
+DROP PRIMARY KEY;
+```
+
+**Example:**
+```sql
+ALTER TABLE student
+DROP PRIMARY KEY;
+```
+
+---
+
+#### 9. Drop Foreign Key
+
+```sql
+ALTER TABLE table_name
+DROP FOREIGN KEY fk_name;
+```
+
+**Example:**
+```sql
+ALTER TABLE enrollment
+DROP FOREIGN KEY fk_student;
+```
+
+---
+
+#### 10. Add Unique Constraint
+
+```sql
+ALTER TABLE table_name
+ADD CONSTRAINT constraint_name UNIQUE (column_name);
+```
+
+**Example:**
+```sql
+ALTER TABLE student
+ADD CONSTRAINT unique_email UNIQUE (email);
+```
+
+---
+
+#### 11. Drop Unique Constraint
+
+```sql
+ALTER TABLE table_name
+DROP INDEX constraint_name;
+```
+
+**Example:**
+```sql
+ALTER TABLE student
+DROP INDEX unique_email;
+```
+
+---
+
+#### 12. Change Column Name and Type (MySQL syntax)
+
+```sql
+ALTER TABLE table_name
+CHANGE old_column_name new_column_name datatype;
+```
+
+**Example:**
+```sql
+ALTER TABLE student
+CHANGE full_name name VARCHAR(50);
+```
+
 
 ### 20.Group By Clause:
 
